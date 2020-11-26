@@ -67,3 +67,15 @@ class World:
                 print(column, end=" | ")
             print()
             print('-'*self.width*4)
+
+    def __eq__(self, other):
+        """
+        Equel method, checks if another World object is equel to this World object
+
+        :param other: World object
+        :return: Boolean
+        """
+        if isinstance(other, self.__class__):
+            return self.world.tolist() == other.world.tolist()
+        else:
+            return False
