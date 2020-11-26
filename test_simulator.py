@@ -21,7 +21,7 @@ class TestSimulator(TestCase):
         exposure_simulation.world.set(2, 2, 1)
         self.assertFalse(exposure_simulation.update().world.any())  # Boolean if there is any value not 0 in array
         self.assertEqual(exposure_simulation.world.world.tolist(), World(5).world.tolist())
-        self.assertEqual(exposure_simulation.world, World(5)) # Can be used because of the _eq_ method in the World class
+        self.assertEqual(exposure_simulation.world, World(5))  # Can be used because of the _eq_ method in the World class
 
         # Check if the simulator kills overpopulated cells
 

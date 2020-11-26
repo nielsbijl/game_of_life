@@ -29,9 +29,9 @@ class Simulator:
         # TODO: Do something to evolve the generation
         array_world = self.world.world
         for row in range(len(array_world)):
-            for collum in range(len(array_world[row])):
-                if self.check_exposure(self.world.get_neighbours(row, collum)) < 2:
-                    self.world.set(row, collum, 0)
+            for column in range(len(array_world[row])):
+                if self.check_exposure(self.world.get_neighbours(row, column)):
+                    self.world.set(row, column, 0)
 
         return self.world
 
