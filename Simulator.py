@@ -33,7 +33,7 @@ class Simulator:
                 if self.check_exposure(self.world.get_neighbours(row, column)):
                     self.world.set(row, column, 0)
 
-
+        self.world.set(2, 2, 0)
         # self.world.set(2, 2, 1)
         # self.world.set(2, 1, 1)
         # self.world.set(2, 3, 1)

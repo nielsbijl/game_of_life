@@ -31,8 +31,11 @@ class TestSimulator(TestCase):
         overcrowding_simulation.world.set(1, 2, 1)
         overcrowding_simulation.world.set(3, 2, 1)
         expected = World(5)
-        expected.set(2, 1, 1), expected.set(2, 3, 1), expected.set(1, 2, 1), expected.set(3, 2, 1)
-        self.assertEqual(exposure_simulation.update(), expected)
+        expected.set(2, 1, 1)
+        expected.set(2, 3, 1)
+        expected.set(1, 2, 1)
+        expected.set(3, 2, 1)
+        self.assertEqual(overcrowding_simulation.update(), expected)
 
         # Check if the simulator let the cell survive with 2 or 3 neighbours alive
 
