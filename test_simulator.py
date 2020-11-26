@@ -13,7 +13,16 @@ class TestSimulator(TestCase):
         """
         Tests that the update functions returns an object of World type.
         """
+        # Check of the simulator update function a World type returns
         self.assertIsInstance(self.sim.update(), World)
+
+        # Check if the simulator kills underpopulated cells
+
+        # Check if the simulator kills overpopulated cells
+
+        # Check if the simulator let the cell survive with 2 or 3 neighbours alive
+
+        # Check if the simulator makes a dead cell alive if it has exactly 3 neighbours alive
 
     def test_get_generation(self):
         """
