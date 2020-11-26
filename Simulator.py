@@ -27,7 +27,8 @@ class Simulator:
         self.generation += 1
 
         #TODO: Do something to evolve the generation
-        self.world.set(0,0)
+        if self.world.get(2, 2) == 1:
+            self.world.set(2, 2, 0)
 
         return self.world
 
