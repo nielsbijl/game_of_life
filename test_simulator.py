@@ -17,6 +17,10 @@ class TestSimulator(TestCase):
         self.assertIsInstance(self.sim.update(), World)
 
         # Check if the simulator kills underpopulated cells
+        exposure_world = World(5)
+        exposure_world.set(2, 2, 1)
+        exposure_simulation = Simulator(exposure_world)
+        self.assertEqual(exposure_simulation.update(), World(5))
 
         # Check if the simulator kills overpopulated cells
 
