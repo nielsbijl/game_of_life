@@ -33,6 +33,12 @@ class Simulator:
                 if self.check_exposure(self.world.get_neighbours(row, column)):
                     self.world.set(row, column, 0)
 
+
+        # self.world.set(2, 2, 1)
+        # self.world.set(2, 1, 1)
+        # self.world.set(2, 3, 1)
+        # self.world.set(1, 2, 1)
+        # self.world.set(3, 2, 1)
         return self.world
 
     def get_generation(self):
