@@ -32,13 +32,8 @@ class Simulator:
             for column in range(len(array_world[row])):
                 if self.check_exposure(self.world.get_neighbours(row, column)):
                     self.world.set(row, column, 0)
-
-        self.world.set(2, 2, 0)
-        # self.world.set(2, 2, 1)
-        # self.world.set(2, 1, 1)
-        # self.world.set(2, 3, 1)
-        # self.world.set(1, 2, 1)
-        # self.world.set(3, 2, 1)
+                if self.check_overcrowding(self.world.get_neighbours(row, column)):
+                    self.world.set(row, column, 0)
         return self.world
 
     def get_generation(self):
@@ -79,6 +74,19 @@ class Simulator:
                 False if he stays alive
         """
         if sum(neighbours) < 2:
+            return True
+        else:
+            return False
+
+    @staticmethod
+    def check_overcrowding(neighbours):
+        """
+        If a cell has more then 3 neighbours alive, the cell will die.
+
+        :return True if he dies
+                False if he stays alive
+        """
+        if sum(neighbours) > 3:
             return True
         else:
             return False
