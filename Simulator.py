@@ -27,8 +27,11 @@ class Simulator:
         self.generation += 1
 
         #TODO: Do something to evolve the generation
-        if self.world.get(2, 2) == 1:
-            self.world.set(2, 2, 0)
+        array_world = self.world.world
+        for row in range(len(array_world)):
+            for collum in range(len(array_world[row])):
+                if sum(self.world.get_neighbours(row, collum)) < 2:
+                    self.world.set(row, collum, 0)
 
         return self.world
 
