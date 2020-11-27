@@ -20,6 +20,15 @@ class Simulator:
         else:
             self.world = world
 
+    def rule_input(self):
+        """
+        Checks if input is valid, returns list of birth cases and strave cases
+
+        :param rule_string: rule string input (default: "B3/S23")
+        :return: ([Birth], [Starve])
+        """
+        return None
+
     def update(self) -> World:
         """
         Updates the state of the world to the next generation. Uses rules for evolution.
