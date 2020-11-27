@@ -67,6 +67,10 @@ class TestSimulator(TestCase):
         self.assertEqual(input_test_case.birth_rules, [3])
         self.assertEqual(input_test_case.starve_rules, [2, 3])
 
+        input_test_case = Simulator(World(5), "B123/S4567")
+        self.assertEqual(input_test_case.birth_rules, [1, 2, 3])
+        self.assertEqual(input_test_case.starve_rules, [4, 5, 6, 7])
+
     def test_get_generation(self):
         """
         Tests whether get_generation returns the correct value:
