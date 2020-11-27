@@ -38,6 +38,17 @@ class TestSimulator(TestCase):
         self.assertEqual(overcrowding_simulation.update(), expected)
 
         # Check if the simulator let the cell survive with 2 or 3 neighbours alive
+        survival_simulation = Simulator(World(10))
+        survival_simulation.world.set(0, 0, 1)
+        survival_simulation.world.set(1, 0, 1)
+        survival_simulation.world.set(1, 0, 1)
+        survival_simulation.world.set(1, 1, 1)
+        expected = World(10)
+        expected.set(0, 0, 1)
+        expected.set(1, 0, 1)
+        expected.set(1, 0, 1)
+        expected.set(1, 1, 1)
+        self.assertEqual(survival_simulation.update(), expected)
 
         # Check if the simulator makes a dead cell alive if it has exactly 3 neighbours alive
 
