@@ -8,21 +8,22 @@ class Simulator:
     Read https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life for an introduction to Conway's Game of Life.
     """
 
-    def __init__(self, world=None, rule_string = "B3/S23"):
+    def __init__(self, world=None, rule_string="B3/S23"):
         """
         Constructor for Game of Life simulator.
 
         :param world: (optional) environment used to simulate Game of Life.
         """
         self.generation = 0
-        self.birth_rules = self.rule_input()['birth']
-        self.strave_rules = self.rule_input()['starve']
+        self.birth_rules = self.rule_input(rule_string)['birth']
+        self.starve_rules = self.rule_input(rule_string)['starve']
+
         if world == None:
             self.world = World(20)
         else:
             self.world = world
 
-    def rule_input(self):
+    def rule_input(self, rule_string = "B3/S23"):
         """
         Checks if input is valid, returns list of birth cases and strave cases
 
@@ -31,7 +32,11 @@ class Simulator:
                     "strave": "[strave cases]",
                     }
         """
-        return None
+        rules = {
+            "birth": [3],
+            "starve": [2, 3]
+        }
+        return rules
 
     def update(self) -> World:
         """

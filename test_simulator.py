@@ -65,7 +65,7 @@ class TestSimulator(TestCase):
     def test_rule_input(self):
         input_test_case = Simulator(World(5))
         self.assertEqual(input_test_case.birth_rules, [3])
-        self.assertEqual(input_test_case.birth_rules, [2, 3])
+        self.assertEqual(input_test_case.starve_rules, [2, 3])
 
     def test_get_generation(self):
         """
