@@ -51,6 +51,15 @@ class TestSimulator(TestCase):
         self.assertEqual(survival_simulation.update(), expected)
 
         # Check if the simulator makes a dead cell alive if it has exactly 3 neighbours alive
+        birth_simulation = Simulator(World(5))
+        birth_simulation.world.set(2, 1, 1)
+        birth_simulation.world.set(2, 2, 1)
+        birth_simulation.world.set(2, 3, 1)
+        expected = World(5)
+        expected.set(1, 2, 1)
+        expected.set(2, 2, 1)
+        expected.set(3, 2, 1)
+        self.assertEqual(birth_simulation.update(), expected)
 
     def test_get_generation(self):
         """
