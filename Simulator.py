@@ -23,19 +23,32 @@ class Simulator:
         else:
             self.world = world
 
-    def rule_input(self, rule_string = "B3/S23"):
+    def rule_input(self, rule_string):
         """
         Checks if input is valid, returns list of birth cases and strave cases
 
-        :param rule_string: rule string input (default: "B3/S23")
+        :param rule_string: rule string input (default by Simulator constructor: "B3/S23")
         :return:  { "brith": [brith cases],
                     "strave": "[strave cases]",
                     }
         """
+        birth = []
+        starve = []
+
+        b_index = rule_string.index("B")
+        s_index = rule_string.index("S")
+        birth_string = rule_string[b_index+1:s_index-1]
+        starve_string = rule_string[s_index+1:]
+        for birth_rule in birth_string:
+            birth.append(int(birth_rule))
+        for starve_rule in starve_string:
+            starve.append(int(starve_rule))
+
         rules = {
-            "birth": [3],
-            "starve": [2, 3]
-        }
+                "birth": birth,
+                "starve": starve
+            }
+
         return rules
 
     def update(self) -> World:
