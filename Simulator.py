@@ -1,4 +1,5 @@
 from World import *
+import copy
 
 
 class Simulator:
@@ -27,13 +28,16 @@ class Simulator:
         """
         self.generation += 1
         # TODO: Do something to evolve the generation
-        array_world = self.world.world
-        for row in range(len(array_world)):
-            for column in range(len(array_world[row])):
-                if self.check_exposure(self.world.get_neighbours(row, column)):
+        curr_world = copy.deepcopy(self.world)
+        array_world = curr_world.world
+        for row in range(curr_world.width):
+            for column in range(curr_world.height):
+                if self.check_exposure(curr_world.get_neighbours(row, column)):
                     self.world.set(row, column, 0)
-                if self.check_overcrowding(self.world.get_neighbours(row, column)):
+                if self.check_overcrowding(curr_world.get_neighbours(row, column)):
                     self.world.set(row, column, 0)
+                if self.check_birth(curr_world.get_neighbours(row, column), curr_world.get(row, column)):
+                    self.world.set(row, column, 1)
         return self.world
 
     def get_generation(self):
@@ -88,5 +92,21 @@ class Simulator:
         """
         if sum(neighbours) > 3:
             return True
+        else:
+            return False
+
+    @staticmethod
+    def check_birth(neighbours, cell_value):
+        """
+        If a cell has more then 3 neighbours alive, the cell will die.
+
+        :return True if he dies
+                False if he stays alive
+        """
+        if cell_value == 0:
+            if sum(neighbours) == 3:
+                return True
+            else:
+                return False
         else:
             return False
